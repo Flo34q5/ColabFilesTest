@@ -69,7 +69,7 @@ def conditions_test(Q,QTQ,eig_vals,singular_vals,cond_diy):
   else:
       print("\033[92mAlle Tests erfolgreich!")
 
-def orthonormality_test():
+def orthonormality_test(is_orthonormal):
   class test_base:
     def __init__(self,vectors,dimension,orthonormal):
       self.vectors = vectors
