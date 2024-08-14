@@ -1,3 +1,5 @@
+import numpy as np
+
 def get_components_dict():
   components = []
   crankshaft = {"name":"crankshaft",
