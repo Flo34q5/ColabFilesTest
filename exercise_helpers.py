@@ -12,6 +12,7 @@ def get_components_dict():
                    }
   components.append(crankshaft)
   components.append(ball_bearing)
+  return components
 
 def radius_of_component(x):
   def comp_func(x):
