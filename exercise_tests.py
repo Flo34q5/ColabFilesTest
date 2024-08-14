@@ -33,6 +33,26 @@ def dicts_test(cylinder_head,components,with_exists):
     else:
       print("\033[92mAlle Tests erfolgreich!")
 
+def arithmetic_arrays_test(D,F,G,H):
+    try:
+      # check A
+      assert np.all(A == np.array([[2,3],[9,2],[4,5]])), f"\033[91mFehler in A. Erwartet: \n{np.array([[2,3],[9,2],[4,5]])}\n\n Erhalten: \n{A}"
+
+      # check B
+      assert np.all(B[0] == np.array([[1,1]])), f"\033[91mFehler in B. Erste Zeile enthält nicht nur Einsen."
+      assert np.all(B[1] != 1), f"\033[91mFehler in B. Zweite Zeile enthält Einsen."
+      assert np.all(B[2] != 1), f"\033[91mFehler in B. Dritte Zeile enthält Einsen."
+
+      # check C
+      assert np.all(C == A+B), f"\033[91mFehler in C. Erwartet: \n{A+B}\n\n Erhalten: \n{C}"
+
+      # check D
+      assert np.all(D == 2*C), f"\033[91mFehler in C. Erwartet: \n{2*C}\n\n Erhalten: \n{D}"
+    except AssertionError as msg:
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
 def conditions_test(Q,QTQ,eig_vals,singular_vals,cond_diy):
   QTQ_val = np.dot(Q.T,Q)
   eig_vals_val = np.linalg.eig(QTQ_val)[0]
