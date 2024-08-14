@@ -33,7 +33,7 @@ def dicts_test(cylinder_head,components,with_exists):
     else:
       print("\033[92mAlle Tests erfolgreich!")
 
-def arithmetic_arrays_test(D,F,G,H):
+def arithmetic_arrays_test(A,B,C,D):
     try:
       # check A
       assert np.all(A == np.array([[2,3],[9,2],[4,5]])), f"\033[91mFehler in A. Erwartet: \n{np.array([[2,3],[9,2],[4,5]])}\n\n Erhalten: \n{A}"
