@@ -1,5 +1,9 @@
 import numpy as np
+import pandas as pd
 
+# ========================================================================== 
+# Exercise 1
+# ==========================================================================
 def arithmetics_test(Ekin):
     try:
       assert np.isclose(Ekin, 50000, atol=0.05 / 1000), f"\033[91mFehler in Ekin. Erwartet {50000.0} erhalten {Ekin}"
@@ -139,4 +143,20 @@ def plt_derivative_test(time, space, velocity):
   except AssertionError as msg:
       print(msg)
   else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+# ========================================================================== 
+# Exercise 2
+# ==========================================================================
+def combinatorics_df_test(component_dict,components_df):
+    val_dict = {"Component": ["Gear", "Gear", "Gear", "Bolt", "Bolt", "Sensor", "Sensor", "Sensor"],
+                "Type": ["A", "B", "C", "1", "2", "X", "Y", "Z"],
+                "Quantity": [3,3,3,2,2,3,3,3]}
+    val_df = pd.DataFrame(val_dict)
+    try:
+      assert component_dict == val_dict, f"\033[91mFehler in component_dict. Erwartet: \n {val_dict} \n Erhalten: \n {component_dict}"
+      pd.testing.assert_frame_equal(val_df, components_df)
+    except AssertionError as msg: 
+      print(msg)
+    else:
       print("\033[92mAlle Tests erfolgreich!")
