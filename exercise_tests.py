@@ -160,3 +160,31 @@ def combinatorics_df_test(component_dict,components_df):
       print(msg)
     else:
       print("\033[92mAlle Tests erfolgreich!")
+
+def combinatorics_num_comp_test(num_gears,num_bolts,num_sensors):
+    try:
+      assert num_gears == 3, f"\033[91mFehler in num_gears. Erwartet: 3 Erhalten: {num_gears}"
+      assert num_bolts == 2, f"\033[91mFehler in num_gears. Erwartet: 2 Erhalten: {num_bolts}"
+      assert num_sensors == 3, f"\033[91mFehler in num_gears. Erwartet: 3 Erhalten: {num_sensors}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def combinatorics_perm_test(num_perm,num_perm_rep):
+    try:
+      assert num_perm == 72, f"\033[91mFehler in num_gears. Erwartet: 72 Erhalten: {num_perm}"
+      assert num_perm_rep == 324, f"\033[91mFehler in num_gears. Erwartet: 324 Erhalten: {num_perm_rep}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def combinatorics_comb_test(num_comb,num_comb_rep):
+    try:
+      assert num_comb == 9, f"\033[91mFehler in num_gears. Erwartet: 9 Erhalten: {num_comb}"
+      assert num_comb_rep == 108, f"\033[91mFehler in num_gears. Erwartet: 108 Erhalten: {num_comb_rep}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
