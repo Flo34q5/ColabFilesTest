@@ -44,13 +44,13 @@ def visualize_disc(x_start,x_end,r):
 # ========================================================================== 
 # Exercise 2
 # ==========================================================================
-def combinatorics_plot_num(perm_w_rep, perm_wo_rep, comb_w_rep, comb_wo_rep):
+def combinatorics_plot_num(num_perm_rep, num_perm, num_comb_rep, num_comb):
   # Save the results in a dictionary
   results = {
-      'Permutation w replacement': perm_w_rep,
-      'Permutation wo replacement': perm_wo_rep,
-      'Combination w replacement': comb_w_rep,
-      'Combination wo replacement': comb_wo_rep
+      'Permutation w replacement': num_perm_rep,
+      'Permutation wo replacement': num_perm,
+      'Combination w replacement': num_comb_rep,
+      'Combination wo replacement': num_comb
   }
   results_df = pd.DataFrame(list(results.items()), columns=['Scenario', 'Number of possibilities'])
 
