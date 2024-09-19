@@ -35,3 +35,20 @@ def visualize_disc(x_start,x_end,r):
     x = np.linspace(x_start, x_end, 10)
     y = np.full(10, r)
     return x,y
+
+def combinatorics_plot_num(perm_w_rep, perm_wo_rep, comb_w_rep, comb_wo_rep):
+  # Save the results in a dictionary
+  results = {
+      'Permutation w replacement': perm_w_rep,
+      'Permutation wo replacement': perm_wo_rep,
+      'Combination w replacement': comb_w_rep,
+      'Combination wo replacement': comb_wo_rep
+  }
+  results_df = pd.DataFrame(list(results.items()), columns=['Scenario', 'Number of possibilities'])
+
+  # Plotting
+  plt.figure(figsize=(10, 6))
+  plt.bar(results_df['Scenario'], results_df['Number of possibilities'], color='skyblue')
+  plt.ylabel('Number of possibilities')
+  plt.xticks(rotation=45)
+  plt.show()
