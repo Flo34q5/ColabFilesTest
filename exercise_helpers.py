@@ -1,5 +1,9 @@
 import numpy as np
+import pandas as pd
 
+# ========================================================================== 
+# Exercise 1
+# ==========================================================================
 def get_components_dict():
   components = []
   crankshaft = {"name":"crankshaft",
@@ -36,6 +40,9 @@ def visualize_disc(x_start,x_end,r):
     y = np.full(10, r)
     return x,y
 
+# ========================================================================== 
+# Exercise 2
+# ==========================================================================
 def combinatorics_plot_num(perm_w_rep, perm_wo_rep, comb_w_rep, comb_wo_rep):
   # Save the results in a dictionary
   results = {
