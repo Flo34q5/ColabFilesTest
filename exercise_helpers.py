@@ -86,11 +86,12 @@ class regressor():
     return X_scaled
 
   def train(self, w, b, learning_rate, iterations):
+    self.history_iterations = iterations
     self.w, self.b, self.loss_history = self.optimizer(self.X, self.Y, w, b, learning_rate, iterations)
 
   def plot_loss_history(self):
     # Plot Loss over Iterations
-    plt.plot(range(iterations), self.loss_history)
+    plt.plot(range(self.history_iterations), self.loss_history)
     plt.xlabel("Iterations")
     plt.ylabel("Loss")
     plt.title("Loss over Iterations")
