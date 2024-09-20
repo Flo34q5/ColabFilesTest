@@ -257,6 +257,19 @@ def motor_errors_test(P_conditional, P_causal):
     else:
       print("\033[92mAlle Tests erfolgreich!")
 
+def production_df_test(production_df):
+    production_df_val = pd.DataFrame({'Month': ['2024-01', '2024-01', '2024-02', '2024-02','2024-03', '2024-03'],
+                                      'Machine_ID': ['M001', 'M002', 'M001', 'M003','M002', 'M003'],
+                                      'Production_Quantity': [50, 30, 60, 40, 45, 55]
+  })
+    
+    try:
+      pd.testing.assert_frame_equal(production_df_val, production_df)
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
 def distribution_binom_test(n, p, expected_value_binom):
     try:
       assert n == 30, f"\033[91mFehler in n."
