@@ -257,3 +257,43 @@ def motor_errors_test(P_conditional, P_causal):
     else:
       print("\033[92mAlle Tests erfolgreich!")
 
+def distribution_binom_test(n, p, expected_value_binom):
+    try:
+      assert n == 30, f"\033[91mFehler in n."
+      assert p == 0.05, f"\033[91mFehler in p."
+      assert expected_value_binom == n * p, f"\033[91mFehler in expected_value_binom. Erwartet {n * p} erhalten {expected_value_binom}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def distribution_norm_test(mean, std, expected_value_norm):
+    try:
+      assert mean == 0, f"\033[91mFehler in mean."
+      assert std == 0.02, f"\033[91mFehler in std."
+      assert expected_value_norm == mean, f"\033[91mFehler in expected_value_norm. Erwartet {mean} erhalten {expected_value_norm}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def distribution_poisson_test(lambd, expected_value_poisson):
+    try:
+      assert lambd == 2, f"\033[91mFehler in lambd."
+      assert expected_value_poisson == lambd, f"\033[91mFehler in expected_value_poisson. Erwartet {lambd} erhalten {expected_value_poisson}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def distribution_uniform_test(a, b, expected_value_uniform):
+    expected_val = (a + b) / 2
+    try:
+      assert a == 5, f"\033[91mFehler in a."
+      assert b == 10, f"\033[91mFehler in b."
+      assert expected_value_uniform == expected_val, f"\033[91mFehler in expected_value_uniform. Erwartet {expected_val} erhalten {expected_value_uniform}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
