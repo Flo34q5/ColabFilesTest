@@ -248,4 +248,12 @@ def qlt_prob_test(A3_prob, A3_defective_prob):
     else:
       print("\033[92mAlle Tests erfolgreich!")
 
+def motor_errors_test(P_conditional, P_causal):
+    try:
+      assert P_conditional == 0.8, f"\033[91mFehler in P_conditional."
+      assert P_causal == 0.15, f"\033[91mFehler in P_causal."
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
 
