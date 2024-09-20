@@ -71,7 +71,10 @@ def get_production_df():
   return production_df
 
 class regressor():
-  def __init__(self, X, Y):
+  def __init__(self):
+    pass
+    
+  def add_data(self, X, Y):
     self.X = self.scale_input(X,Y)
     self.Y = Y
 
