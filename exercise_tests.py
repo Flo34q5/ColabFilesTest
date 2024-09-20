@@ -188,3 +188,26 @@ def combinatorics_comb_test(num_comb,num_comb_rep):
       print(msg)
     else:
       print("\033[92mAlle Tests erfolgreich!")
+
+def probability_space_test1(omega, len_A):
+    try:
+      assert omega == ["aa", "ab", "ba", "bb"], f"\033[91mFehler in omega. Erhalten: {omega}"
+      assert len_A == 16, f"\033[91mFehler in num_gears. Erwartet: 16 Erhalten: {len_A}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def probability_space_test2(A1, P_A1, A2, P_A2, expectation):
+    try:
+      P_A2_val = (0.6)**2 + 0.6 * 0.4 + 0.4 * 0.6
+      P_A1_val = 0.6 * 0.6 + 0.4 * 0.4
+      assert A1 == ["aa","bb"], f"\033[91mFehler in A1. Erhalten: {A1}"
+      assert P_A1 == P_A1_val, f"\033[91mFehler in P_A1. Erwartet: {P_A1_val} Erhalten: {P_A1}"
+      assert A2 == ["aa","ab","ba"], f"\033[91mFehler in A2. Erhalten: {A2}"
+      assert P_A2 == P_A2_val, f"\033[91mFehler in P_A2. Erwartet: {P_A2_val} Erhalten: {P_A2}"
+      assert expectation == P_A2_val, f"\033[91mFehler in expectation. Erwartet: {P_A2_val} Erhalten: {expectation}"
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
