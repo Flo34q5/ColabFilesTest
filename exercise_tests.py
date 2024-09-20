@@ -310,3 +310,11 @@ def distribution_uniform_test(a, b, expected_value_uniform):
     else:
       print("\033[92mAlle Tests erfolgreich!")
 
+def motor_df_test(motor_df, motor_df_final):
+    motor_df_final_val = motor_df.reset_index().rename(columns = {"index":"ID"}).drop(["Laufzeit (h)"], axis = 1)
+    try:
+      pd.testing.assert_frame_equal(motor_df_final_val, motor_df_final)
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
