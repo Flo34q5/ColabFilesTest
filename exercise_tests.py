@@ -211,3 +211,41 @@ def probability_space_test2(A1, P_A1, A2, P_A2, expectation):
       print(msg)
     else:
       print("\033[92mAlle Tests erfolgreich!")
+
+def qlt_location_test(roughness_42):
+    try:
+      assert np.isclose(roughness_42, 1.30544, atol=0.0001), f"\033[91mFehler in roughness_42. Erwartet {1.30544} erhalten {roughness_42}"
+    except AssertionError as msg:
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def compare_dataframes(df1, df2, df_name):
+    try:
+        pd.testing.assert_frame_equal(df1, df2)
+    except AssertionError as e:
+        raise AssertionError(f"Fehler in {df_name} (right DataFrame)\n\nDetails:\n{e}")
+
+def qlt_prob_spaces_test(qlt_df, omega_qlt, A3):
+    omega_val = qlt_df
+    mask = (omega_qlt['surface_roughness'] > 5) & (omega_qlt['hardness'] < 44)
+    A3_val = omega_val[mask]
+
+    try:
+      compare_dataframes(omega_val, omega_qlt, "omega_qlt")
+      compare_dataframes(A3_val, A3, "A3")
+    except AssertionError as msg: 
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+def qlt_prob_test(A3_prob, A3_defective_prob):
+    try:
+      assert np.isclose(A3_prob, 0.07, atol=0.01), f"\033[91mFehler in A3_prob. Erwartet 0.07 erhalten {A3_prob}"
+      assert np.isclose(A3_defective_prob, 0.58, atol=0.01), f"\033[91mFehler in A3_defective_prob. Erwartet 0.58 erhalten {A3_defective_prob}"
+    except AssertionError as msg:
+      print(msg)
+    else:
+      print("\033[92mAlle Tests erfolgreich!")
+
+
