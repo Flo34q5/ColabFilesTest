@@ -69,3 +69,38 @@ def get_production_df():
       'Production_Quantity': [50, 30, 60, 40]
   })
   return production_df
+
+class regressor():
+  def __init__(self, X, Y):
+    self.X = self.scale_input(X,Y)
+    self.Y = Y
+
+  def set_optimizer(self, optimizer):
+    self.optimizer = optimizer
+
+  def scale_input(self, X, Y):
+    # Min-Max Scaling
+    X_min = np.min(X)
+    X_max = np.max(X)
+    X_scaled = (X - X_min) / (X_max - X_min)
+    return X_scaled
+
+  def train(self, w, b, learning_rate, iterations):
+    self.w, self.b, self.loss_history = self.optimizer(self.X, self.Y, w, b, learning_rate, iterations)
+
+  def plot_loss_history(self):
+    # Plot Loss over Iterations
+    plt.plot(range(iterations), self.loss_history)
+    plt.xlabel("Iterations")
+    plt.ylabel("Loss")
+    plt.title("Loss over Iterations")
+    plt.show()
+
+  def plot_data_prediction(self):
+  # Plot Prediction Line
+  plt.scatter(self.X, self.Y, color='blue', label='Data Points')
+  plt.plot(self.X, self.w * self.X + self.b, color='red', label='Regression Line')
+  plt.xlabel('Last (%) (Scaled)')
+  plt.ylabel('Energieverbrauch (kWh)')
+  plt.legend()
+  plt.show()
