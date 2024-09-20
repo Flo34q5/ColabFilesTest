@@ -60,3 +60,12 @@ def combinatorics_plot_num(num_perm_rep, num_perm, num_comb_rep, num_comb):
   plt.ylabel('Number of possibilities')
   plt.xticks(rotation=45)
   plt.show()
+
+def get_production_df(): 
+  # Production data per month
+  production_df = pd.DataFrame({
+      'Month': ['2024-01', '2024-01', '2024-02', '2024-02'],
+      'Machine_ID': ['M001', 'M002', 'M001', 'M003'],
+      'Production_Quantity': [50, 30, 60, 40]
+  })
+  return production_df
