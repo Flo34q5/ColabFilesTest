@@ -1,0 +1,82 @@
+@prefix conf: <http://conference.eu/vocab/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+
+conf:Conference     a   rdfs:Class.
+conf:ConfCenter     a   rdfs:Class.
+conf:Author             a    rdfs:Class.
+conf:Article              a    rdfs:Class.
+conf:Organization    a    rdfs:Class.
+conf:Presentation    a   rdfs:Class.
+
+conf:hasConferenceName  a   rdf:Property,  owl:DatatypeProperty ;
+                                        rdfs:domain     conf:Conference;
+                                        rdfs:range        xsd:string.
+
+conf:hasYear  a   rdf:Property,  owl:DatatypeProperty ;
+                 rdfs:domain     conf:Conference;
+                 rdfs:range        xsd:date.
+
+conf:hosts a  rdf:Property , owl:ObjectProperty ;
+                rdfs:domain  conf:ConfCenter ;
+                rdfs:range     conf:Conference .
+
+conf:Address    a   rdf:Property, owl:DatatypeProperty ;
+                         rdfs:domain  conf:ConfCenter;
+                         rdfs:range     xsd:string.
+
+conf:articlePresentation    a    rdf:Property, owl:ObjectProperty;
+                                          rdfs:domain      conf:Presentation;
+                                          rdfs:range         conf:Article.
+
+conf:conferencePresentation a rdf:Property, owl:ObjectProperty;
+                                               rdfs:domain  conf:Presentation;
+                                               rdfs:range     conf:Conference.
+
+conf:authorPresentation a rdf:Property, owl:ObjectProperty;
+                                        rdfs:domain  conf:Presentation;
+                                        rdfs:range     conf:Author.
+
+conf:hasTitle    a    rdf:Property, owl:DatatypeProperty;
+                  rdfs:domain      conf:Article; 
+                  rdfs:range         xsd:string.
+
+conf:hasKeyword    a    rdf:Property, owl:DatatypeProperty;
+                            rdfs:domain      conf:Article;
+                            rdfs:range         xsd:string.
+
+conf:hasAuthorName  a  rdf:Property , owl:DatatypeProperty ;
+                               rdfs:domain  conf:Author ;
+                              rdfs:range     xsd:string .
+
+conf:hasPhone_number  a  rdf:Property , owl:DatatypeProperty ;
+                                   rdfs:domain  conf:Author ;
+                                   rdfs:range     xsd:int .
+
+conf:hasAffiliation         a  rdf:Property, owl:ObjectProperty;
+                             rdfs:domain  conf:Author;
+                                      rdfs:range   conf:Organization.
+
+conf:hasOrganizationName  a  rdf:Property , owl:DatatypeProperty ;
+                                         rdfs:domain  conf:Organization ; 
+                                        rdfs:range     xsd:string.
+
+conf:hasCountry  a  rdf:Property , owl:DatatypeProperty ;
+                      rdfs:domain  conf:Organization ;
+                      rdfs:range     xsd:string .
+
+conf:InarticlePresentation    a rdf:Property,owl:ObjectProperty;
+                                              owl:inverseOf conf:articlePresentation .
+
+conf:Article owl:equivalentClass [owl:cardinality  1 ;  owl:onProperty conf:InarticlePresentation ] .
+
+conf:InconferencePresentation a rdf:Property,owl:ObjectProperty;
+                                                  owl:inverseOf conf:conferencePresentation.
+
+conf:Presentation  owl:equivalentClass [owl:minCardinality  1 ; owl:onProperty conf:authorPresentation].
+conf:Presentation  owl:equivalentClass [owl:maxCardinality  2  ; owl:onProperty conf:authorPresentation].
+
+conf:Author owl:equivalentClass [owl:cardinality  1 ;  owl:onProperty conf:Author_Name ].
+conf:Conference owl:equivalentClass [owl:cardinality  1 ;  owl:onProperty conf:Conference_Name] .

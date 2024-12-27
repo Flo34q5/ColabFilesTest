@@ -1,0 +1,14 @@
+AuthorID,ConferenceID,ArticleID
+1000,Conf1,Ar01
+1020,Conf1,Ar01
+1080,Conf1,Ar02
+1030,Conf2,Ar03
+1040,Conf2,Ar04
+1000,Conf2,Ar04
+1040,Conf3,Ar05
+1030,Conf3,Ar06
+1070,Conf4,Ar01
+1050,Conf4,Ar07
+1060,Conf4,Ar07
+1090,Conf4,Ar08
+1020,Conf4,Ar08

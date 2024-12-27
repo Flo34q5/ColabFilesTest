@@ -1,0 +1,46 @@
+version: '2.3'
+
+services:
+  graphdb:
+    image: khaller/graphdb-free:10.2.3
+    container_name: sdmkg-graphdb
+    volumes:
+      - type: bind
+        source: ./graphdb
+        target: /opt/graphdb/data
+    ports:
+      - '7200:7200'
+    networks:
+      - sdmkg
+
+  rdfizer:
+    container_name: sdmkg-rdfizer
+    image: sdmtib/sdmrdfizer:4.6.6.14
+    volumes:
+      - type: bind
+        source: ./data
+        target: /data
+    networks:
+      - sdmkg
+
+  travshacl:
+    container_name: sdmkg-travshacl
+    image: sdmtib/travshacl:1.7.0
+    ports:
+      - "5000:5000"
+    depends_on:
+      - graphdb
+    volumes:
+      - type: bind
+        source: ./data/constraints
+        target: /constraints
+    environment:
+      - SCHEMA_PATH=/constraints/homework
+      - ENDPOINT=http://sdmkg-graphdb:7200/repositories/homework9_provided_data
+    networks:
+      - sdmkg
+
+networks:
+  sdmkg:
+    external: false
+
